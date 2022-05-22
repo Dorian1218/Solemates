@@ -1,0 +1,11 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,16 @@
+.card {
+  width: 20vw;
+  height: auto;
+  border: 1px solid grey;
+  margin-right: 20px;
+  border-radius: 10%;
+  box-shadow: 5px 7px black;
+  margin-bottom: 10px;
+  padding: 10px;
+  user-select: none;
+}
+
+img {
+  width: 80%;
+  height: auto;
+}
