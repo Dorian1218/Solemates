@@ -45,18 +45,6 @@ function Signup() {
           <button>Signup</button>
         </form>
       </div>
-
-      <h1>Post a blog</h1>
-      <form>
-        <label>Title</label>
-        <input type="text" />
-        <br />
-        <textarea />
-        <select>
-          <option>Pop out</option>
-          <option>Homoside</option>
-        </select>
-      </form>
     </div>
   );
 }
