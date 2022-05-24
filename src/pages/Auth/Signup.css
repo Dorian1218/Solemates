@@ -1,5 +1,19 @@
 .formContainer {
+  border: 1px solid gray;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40vw;
+  height: 50vh;
+  padding: 10px;
+  border-radius: 15px;
+  max-width: 400px;
+  min-width: 250px;
+}
+
+.signup-div {
+  display: flex;
+  align-items: center;
   flex-direction: column;
 }
 

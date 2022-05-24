@@ -5,18 +5,20 @@ function Navbar() {
   return (
     <header className="navbar">
       <ul className="navbar-items">
-        <Link to="/">
-          <li>Home</li>
-        </Link>
-        <Link to="./about">
-          <li>About</li>
-        </Link>
-        <Link to="./contacts">
-          <li>Contact</li>
-        </Link>
-        <Link to="./Auth/login">
-          <button>Login</button>
-        </Link>
+        <div className="contianer-ul-items">
+          <Link to="/">
+            <li>Home</li>
+          </Link>
+          <Link to="./about">
+            <li>About</li>
+          </Link>
+          <Link to="./contacts">
+            <li>Contact</li>
+          </Link>
+          <Link to="./Auth/Signup">
+            <button className="signup-btn">Signup</button>
+          </Link>
+        </div>
       </ul>
     </header>
   );

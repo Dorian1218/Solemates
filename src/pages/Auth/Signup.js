@@ -1,5 +1,8 @@
 import { useState } from "react";
 import "./Signup.css";
+import React, { useContext } from "react";
+//import { auth } from "../../firebase";
+
 function Signup() {
   let [username, setUsername] = useState("");
   let [email, setEmail] = useState("");
@@ -12,11 +15,12 @@ function Signup() {
     console.log(user);
   }
   return (
-    <div>
+    <div className="signup-div">
       <div className="formContainer">
+        <h1>Signup</h1>
         <form onSubmit={handleSubmit}>
           <input
-            placeholder="username"
+            placeholder="Username"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -25,7 +29,7 @@ function Signup() {
           <br />
 
           <input
-            placeholder="email"
+            placeholder="Email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -34,7 +38,7 @@ function Signup() {
           <br />
 
           <input
-            placeholder="password"
+            placeholder="Password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -43,8 +47,10 @@ function Signup() {
           <br />
 
           <button>Signup</button>
+          <br />
         </form>
       </div>
+      <p>Already Have an Account? Login</p>
     </div>
   );
 }

@@ -8,7 +8,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Contacts from "./pages/Contacts";
 import Footer from "./components/Footer/Footer";
-import Signup from "./pages/Auth/Login";
+import Signup from "./pages/Auth/Signup";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/About" element={<About />}></Route>
         <Route path="/Contacts" element={<Contacts />}></Route>
-        <Route path="/Auth/login" element={<Signup />}></Route>
+        <Route path="/Auth/Signup" element={<Signup />}></Route>
       </Routes>
       <Footer></Footer>
     </div>
