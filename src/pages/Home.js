@@ -4,7 +4,7 @@ import Card from "../components/Card/Card";
 function Home() {
   return (
     <div className="card-div">
-      <Card
+      {/* <Card
         shoeName="Jordan 1"
         img="https://cdn.flightclub.com/TEMPLATE/802799/1.jpg"
         price="1307"
@@ -18,7 +18,7 @@ function Home() {
         img="https://images.stockx.com/images/Air-Jordan-3-Retro-A-Ma-Maniere-W-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1619806955"
         shoeName="Jordan 3"
         price="600"
-      />
+      /> */}
     </div>
   );
 }

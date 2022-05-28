@@ -1,5 +1,6 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 function Navbar() {
   return (
@@ -16,7 +17,9 @@ function Navbar() {
             <li>Contact</li>
           </Link>
           <Link to="./Auth/Signup">
-            <button className="signup-btn">Signup</button>
+            <Button style={{ padding: 0 }} variant="primary">
+              Signup
+            </Button>
           </Link>
         </div>
       </ul>

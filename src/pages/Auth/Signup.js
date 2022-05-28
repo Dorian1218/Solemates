@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { UserAuth } from "/src/context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import { Form, Button, Card, Container } from "react-bootstrap";
 import "./Signup.css";
 function Signup() {
+  const emailRef = useRef();
+  const passwordRef = useRef();
   let [username, setUsername] = useState("");
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
@@ -24,45 +27,51 @@ function Signup() {
   };
 
   return (
-    <div class="signup-div">
-      <div className="formContainer">
-        <form onSubmit={handleSubmit}>
-          <input
-            placeholder="username"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
+    <Container
+      className="d-flex align-items-center"
+      style={{ flexDirection: "column" }}
+    >
+      <Card style={{ minWidth: "400px" }}>
+        <Card.Body>
+          <h2 className="text-center mb-4">Signup</h2>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group id="email">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                ref={emailRef}
+                required
+              />
+            </Form.Group>
 
-          <br />
-
-          <input
-            placeholder="email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-
-          <br />
-
-          <input
-            placeholder="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          <br />
-
-          <button>Signup</button>
-          <br />
-          <p>
-            Already Have an Account? <Link to="/Auth/Login">Login</Link>
-          </p>
-        </form>
+            <Form.Group id="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                ref={passwordRef}
+                required
+              />
+            </Form.Group>
+            <Button
+              variant="primary"
+              size="sm"
+              className="w-100 mt-2"
+              type="submit"
+              style={{ height: "38px" }}
+            >
+              Signup
+            </Button>
+          </Form>
+        </Card.Body>
+      </Card>
+      <div className="w-100 text-center mt-2">
+        Already have an Account? Login
       </div>
-    </div>
+    </Container>
   );
 }
-
 export default Signup;
