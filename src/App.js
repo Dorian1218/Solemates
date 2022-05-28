@@ -9,6 +9,8 @@ import About from "./pages/About";
 import Contacts from "./pages/Contacts";
 import Footer from "./components/Footer/Footer";
 import Signup from "./pages/Auth/Signup";
+import Login from "./pages/Auth/Login";
+import { AuthContextProvider } from "./context/AuthContext";
 
 function App() {
   return (
@@ -16,12 +18,16 @@ function App() {
       <nav>
         <Navbar />
       </nav>
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/About" element={<About />}></Route>
-        <Route path="/Contacts" element={<Contacts />}></Route>
-        <Route path="/Auth/Signup" element={<Signup />}></Route>
-      </Routes>
+      <AuthContextProvider>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/About" element={<About />}></Route>
+          <Route path="/Contacts" element={<Contacts />}></Route>
+          <Route path="/Auth/Signup" element={<Signup />}></Route>
+          <Route path="/Auth/Login" element={<Login />}></Route>
+        </Routes>
+      </AuthContextProvider>
+
       <Footer></Footer>
     </div>
   );

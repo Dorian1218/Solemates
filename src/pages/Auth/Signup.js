@@ -1,26 +1,34 @@
 import { useState } from "react";
+import { UserAuth } from "/src/context/AuthContext";
+import { Link, useNavigate } from "react-router-dom";
 import "./Signup.css";
-import React, { useContext } from "react";
-//import { auth } from "../../firebase";
-
 function Signup() {
   let [username, setUsername] = useState("");
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
+  let [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  function handleSubmit(e) {
+  const createUser = UserAuth();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    try {
+      await createUser(email, password);
+      navigate("/");
+    } catch (e) {
+      setError(e.message);
+      console.log(e.message);
+    }
+  };
 
-    const user = { username, email, password };
-    console.log(user);
-  }
   return (
-    <div className="signup-div">
+    <div class="signup-div">
       <div className="formContainer">
-        <h1>Signup</h1>
         <form onSubmit={handleSubmit}>
           <input
-            placeholder="Username"
+            placeholder="username"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -29,7 +37,7 @@ function Signup() {
           <br />
 
           <input
-            placeholder="Email"
+            placeholder="email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -38,7 +46,7 @@ function Signup() {
           <br />
 
           <input
-            placeholder="Password"
+            placeholder="password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -48,9 +56,11 @@ function Signup() {
 
           <button>Signup</button>
           <br />
+          <p>
+            Already Have an Account? <Link to="/Auth/Login">Login</Link>
+          </p>
         </form>
       </div>
-      <p>Already Have an Account? Login</p>
     </div>
   );
 }
