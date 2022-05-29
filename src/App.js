@@ -1,6 +1,7 @@
 import React from "react";
+import "./App.css";
 
-import Navbar from "./components/Navbar/Navbar.js";
+import CreateNavbar from "./components/Navbar/Navbar.js";
 import { Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -11,12 +12,13 @@ import Footer from "./components/Footer/Footer";
 // import Login from "./pages/Auth/Login";
 import { AuthContextProvider } from "./context/AuthContext";
 import Signup from "./pages/Auth/Signup";
+import Login from "./pages/Auth/Login";
 
 function App() {
   return (
     <div className="App">
       <nav>
-        <Navbar />
+        <CreateNavbar />
       </nav>
 
       <AuthContextProvider>
@@ -25,6 +27,7 @@ function App() {
           <Route path="/About" element={<About />}></Route>
           <Route path="/Contacts" element={<Contacts />}></Route>
           <Route path="/Auth/Signup" element={<Signup />}></Route>
+          <Route path="/Auth/Login" element={<Login />}></Route>
         </Routes>
       </AuthContextProvider>
 

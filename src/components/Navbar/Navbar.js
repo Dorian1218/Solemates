@@ -2,29 +2,32 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
-function Navbar() {
+function CreateNavbar() {
   return (
-    <header className="navbar">
-      <ul className="navbar-items">
-        <div className="contianer-ul-items">
-          <Link to="/">
-            <li>Home</li>
-          </Link>
-          <Link to="./about">
-            <li>About</li>
-          </Link>
-          <Link to="./contacts">
-            <li>Contact</li>
-          </Link>
-          <Link to="./Auth/Signup">
-            <Button style={{ padding: 0 }} variant="primary">
-              Signup
-            </Button>
-          </Link>
-        </div>
-      </ul>
-    </header>
+    <>
+      <div class="header">
+        <h5 className="header-text">Solemates</h5>
+        <Link style={{ textDecoration: "none" }} to="/">
+          <p className="links">Home</p>
+        </Link>
+        <Link style={{ textDecoration: "none" }} to="./about">
+          <p className="links">About</p>
+        </Link>
+        <Link style={{ textDecoration: "none" }} to="./contacts">
+          <p className="links">Contact</p>
+        </Link>
+        <Link to="./Auth/Signup">
+          <Button
+            style={{ padding: 0, height: 26, width: 51 }}
+            variant="primary"
+          >
+            Signup
+          </Button>
+        </Link>
+      </div>
+      <br />
+    </>
   );
 }
 
-export default Navbar;
+export default CreateNavbar;
