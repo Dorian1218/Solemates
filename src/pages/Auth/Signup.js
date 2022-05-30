@@ -9,10 +9,20 @@ function Signup() {
   let [password, setPassword] = useState("");
   let [ConfirmPassword, SetConfirmPassword] = useState("");
   let [error, setError] = useState("");
-  let [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const { createUser } = UserAuth();
+  const { createUser, user } = UserAuth();
+
+  let non = false;
+
+  if (
+    username === "" ||
+    email === "" ||
+    password === "" ||
+    ConfirmPassword === ""
+  ) {
+    non = true;
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,8 +38,8 @@ function Signup() {
 
     try {
       setError("");
-      setLoading(true);
       await createUser(email, password);
+      console.log(user);
       navigate("/");
     } catch {
       setError("Failed to create an account");
@@ -91,18 +101,18 @@ function Signup() {
               className="w-100 mt-2"
               type="submit"
               style={{ height: "38px" }}
-              disabled={loading}
+              disabled={non}
             >
               Signup
             </Button>
-            <p></p>
           </Form>
         </Card.Body>
+        <p style={{ marginLeft: "20px" }}>Password must be 8 characters</p>
       </Card>
-      <div className="w-100 text-center mt-2">
-        <p1>
+      <div className="w-100 text-center" style={{ marginBottom: "50px" }}>
+        <p>
           Already have an Account? <Link to="/Auth/Login">Login</Link>
-        </p1>
+        </p>
       </div>
     </Container>
   );

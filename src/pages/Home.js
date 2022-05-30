@@ -1,9 +1,9 @@
 import React from "react";
 import Card from "../components/Card/Card";
 import { UserAuth } from "../context/AuthContext";
+import { Button } from "react-bootstrap";
 
 function Home() {
-  const { user } = UserAuth();
   return (
     <div className="card-div">
       {/* <Card
@@ -21,7 +21,6 @@ function Home() {
         shoeName="Jordan 3"
         price="600"
       /> */}
-      <p>Username: {user && user.email}</p>
     </div>
   );
 }

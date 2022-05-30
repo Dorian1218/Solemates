@@ -1,10 +1,10 @@
-import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import "./Navbar.css";
 
 function CreateNavbar() {
   return (
-    <>
+    <div>
       <div class="header">
         <h5 className="header-text">Solemates</h5>
         <Link style={{ textDecoration: "none" }} to="/">
@@ -18,7 +18,7 @@ function CreateNavbar() {
         </Link>
         <Link to="./Auth/Signup">
           <Button
-            style={{ padding: 0, height: 26, width: 51 }}
+            style={{ padding: 0, height: 26, width: 51, marginRight: "10" }}
             variant="primary"
           >
             Signup
@@ -26,7 +26,7 @@ function CreateNavbar() {
         </Link>
       </div>
       <br />
-    </>
+    </div>
   );
 }
 
