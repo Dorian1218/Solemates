@@ -1,9 +1,7 @@
 .header {
   width: 100vw;
   height: 59px;
-  background-color: #333;
   padding-left: 12px;
-  padding-top: 15px;
   display: flex;
   margin-left: 0;
   margin-right: 0;
@@ -16,6 +14,12 @@
   user-select: none;
 }
 
+.person-icon:hover {
+  fill: white;
+  border-bottom: 3px solid white;
+  animation: animate 3s linear;
+}
+
 p.links {
   color: gray;
   margin-right: 15px;
@@ -24,4 +28,11 @@ p.links {
 p.links:hover {
   color: white;
   cursor: pointer;
+  border-bottom: 3px solid white;
+}
+
+@media (max-width: 545px) {
+  p {
+    font-size: 1rem;
+  }
 }

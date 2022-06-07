@@ -1,11 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "../components/Card/Card";
-import { UserAuth } from "../context/AuthContext";
-import { Button } from "react-bootstrap";
+import { UserAuth } from "/src/AuthContext";
+import { Button, Alert } from "react-bootstrap";
+import { db } from "../firebase";
+import { collection, addDoc, getDoc } from "@firebase/firestore";
 
 function Home() {
+  const { user } = UserAuth();
+
+  const [tweet, setTweet] = useState("");
+  const [error, setError] = useState("");
+
+  const tweetCollectionRef = collection(db, "tweet");
+
+  const handlePost = async (e) => {
+    e.preventDefault();
+    setError("");
+    if (user === null) {
+      return setError("You need to be logged in to access his feature");
+    } else {
+      await addDoc(tweetCollectionRef, { newTweet: tweet });
+      setError("");
+    }
+  };
   return (
     <div className="card-div">
+      <form>
+        <h1>Post</h1>
+        <input
+          placeholder="tweet"
+          type="text"
+          onChange={(e) => setTweet(e.target.value)}
+        />
+        <button onClick={handlePost}>Post</button>
+      </form>
+      {error && <p style={{ color: "red" }}>{error}</p>}
       {/* <Card
         shoeName="Jordan 1"
         img="https://cdn.flightclub.com/TEMPLATE/802799/1.jpg"

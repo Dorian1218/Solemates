@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { UserAuth } from "/src/context/AuthContext";
+import { UserAuth } from "/src/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Button, Card, Container, Alert } from "react-bootstrap";
 import "./Signup.css";
@@ -13,6 +13,8 @@ function Signup() {
 
   const { createUser, user } = UserAuth();
 
+  let variantBtn = "primary";
+
   let non = false;
 
   if (
@@ -22,6 +24,7 @@ function Signup() {
     ConfirmPassword === ""
   ) {
     non = true;
+    variantBtn = "secondary";
   }
 
   const handleSubmit = async (e) => {
@@ -39,10 +42,17 @@ function Signup() {
     try {
       setError("");
       await createUser(email, password);
-      console.log(user);
       navigate("/");
-    } catch {
-      setError("Failed to create an account");
+    } catch (e) {
+      setError(e.message);
+      console.log(e.message);
+      if (e.message === "Firebase: Error (auth/email-already-in-use).") {
+        setError("Email is already in use");
+      }
+
+      if (e.message === "Firebase: Error (auth/invalid-email).") {
+        setError("The email used in invalid");
+      }
     }
   };
 
@@ -96,7 +106,7 @@ function Signup() {
               />
             </Form.Group>
             <Button
-              variant="primary"
+              variant={variantBtn}
               size="sm"
               className="w-100 mt-2"
               type="submit"

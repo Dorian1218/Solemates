@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Container, Card, Form, Button, Alert } from "react-bootstrap";
-import { UserAuth } from "/src/context/AuthContext";
+import { UserAuth } from "/src/AuthContext";
 import { useState } from "react";
 function Login() {
   let [email, setEmail] = useState("");
@@ -10,10 +10,13 @@ function Login() {
   const { login } = UserAuth();
   const navigate = useNavigate();
 
+  let variantBtn = "primary";
+
   let non = false;
 
   if (email === "" || password === "") {
     non = true;
+    variantBtn = "secondary";
   }
 
   const handleLogin = async (e) => {
@@ -30,6 +33,13 @@ function Login() {
         setError("Account does not exist");
       } else if (e.message === "Firebase: Error (auth/wrong-password).") {
         setError("Password does not match email");
+      } else if (
+        e.message ===
+        "Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests)."
+      ) {
+        setError(
+          "Account temporarly locked for too many failed login attempts"
+        );
       }
     }
   };
@@ -63,7 +73,7 @@ function Login() {
               />
             </Form.Group>
             <Button
-              variant="primary"
+              variant={variantBtn}
               size="sm"
               className="w-100 mt-2"
               type="submit"
